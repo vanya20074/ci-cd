@@ -1,0 +1,28 @@
+- name: ensure nginx is at the latest version
+  apt: name=nginx state=latest
+  when: nginx is defined
+
+- name: start nginx
+  service:
+    name: nginx
+    state: started
+  when: nginx is defined
+
+- name: setup nginx as lb
+  copy: src={{ item.src }} dest={{ item.dst }}
+  notify:
+    - restart nginx
+  when: nginx is defined
+  with_items:
+           - { src: 'roles/nginx/templates/default', dst: '/etc/nginx/sites-available/default' }
+           - { src: 'roles/nginx/templates/nginx.conf', dst: '/etc/nginx/nginx.conf' }
+
+- name: echo lb url
+  shell: echo 'http://'$(curl ifconfig.co/ip)
+  register: url
+  when: nginx is defined
+  notify:
+    - restart nginx
+
+- debug: msg="{{ url.stdout }}"
+  when: nginx is defined

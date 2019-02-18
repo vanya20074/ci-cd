@@ -1,0 +1,6 @@
+- name: pull
+  shell: docker pull anekdot/java_test_app
+
+- name: run
+  shell: docker run -dti --network=host anekdot/java_test_app
+

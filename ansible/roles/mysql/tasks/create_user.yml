@@ -1,0 +1,22 @@
+- name: Create users
+  mysql_user:
+    login_user: "{{ mysql_root_user }}"
+    login_password: "{{ mysql_root_password }}"
+    name: "{{ mysql_user }}"
+    password: "{{ mysql_password }}"
+    priv: '*.*:ALL'
+    host: "{{ item }}"
+    state: present
+  with_items: "{{ mysql_user_hosts }}"
+  when: mysql_user_hosts is defined and mysql is defined
+
+- name: Create test users
+  mysql_user:
+    login_user: "{{ mysql_root_user }}"
+    login_password: "{{ mysql_root_password }}"
+    name: "{{ mysql_user_test }}"
+    password: "{{ mysql_password_test }}"
+    priv: '*.*:ALL'
+    host: '%'
+    state: present
+  when: mysql is defined

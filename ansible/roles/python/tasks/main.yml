@@ -1,0 +1,3 @@
+- include: install_python.yml
+- include: install_python_mysqldb.yml
+

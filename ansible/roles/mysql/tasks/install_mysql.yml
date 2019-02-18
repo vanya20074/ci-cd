@@ -1,0 +1,17 @@
+- name: Install mysql server
+  become: true
+  apt: name=mysql-server update_cache=yes state=latest
+  when: mysql is defined
+
+- name: Upload mysql config for host
+  become: yes
+  template: src=roles/mysql/templates/mysqld.cnf.j2 dest=/etc/mysql/mysql.conf.d/mysqld.cnf
+  when: mysql is defined
+  notify:
+    - restart mysql
+
+- name: Create a new database with name 'visitors'
+  mysql_db:
+    name: visitors
+    state: present
+  when: mysql is defined

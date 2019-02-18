@@ -1,0 +1,4 @@
+- name: Install python-mysqldb
+  become: true
+  apt: name=python-mysqldb update_cache=yes state=latest
+  when: mysql is defined

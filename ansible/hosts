@@ -1,0 +1,3 @@
+[prod]
+mysql ansible_host=mysql.priv mysql=true
+be ansible_host=be nginx=true

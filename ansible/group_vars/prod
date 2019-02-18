@@ -1,0 +1,11 @@
+mysql_root_user: root
+mysql_root_password: root
+
+mysql_port: 3306
+mysql_user: vanya
+mysql_password: vanya
+mysql_user_hosts:
+- 172.16.0.%
+
+mysql_user_test: vanya
+mysql_password_test: vanya
