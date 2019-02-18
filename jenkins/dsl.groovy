@@ -9,8 +9,7 @@ job("dsl-domain-init") {
         git{
             remote{
                 branch("master")
-                credentials("9b6f1814-3355-4285-92a0-45d354ed2df5")
-                url('https://Bimmo@bitbucket.org/Bimmo/ci-cd.git')
+                url('https://github.com/vanya20074/ci-cd.git')
             }
         }
     }
@@ -42,8 +41,7 @@ job("dsl-create-infrastructure") {
         git{
             remote{
                 branch("master")
-                credentials("9b6f1814-3355-4285-92a0-45d354ed2df5")
-                url('https://Bimmo@bitbucket.org/Bimmo/ci-cd.git')
+                url('https://github.com/vanya20074/ci-cd.git')
             }
         }
     }
@@ -122,8 +120,7 @@ job("dsl-ansible") {
         git{
             remote{
                 branch("master")
-                credentials("9b6f1814-3355-4285-92a0-45d354ed2df5")
-                url('https://Bimmo@bitbucket.org/Bimmo/ci-cd.git')
+                url('https://github.com/vanya20074/ci-cd.git')
             }
         }
     }
